@@ -33,7 +33,7 @@ const vitePressOptions = {
 }
 
 const vitePressSidebarOptions = {
-  documentRootPath: '/',
+  documentRootPath: '/docs',
   collapsed: true,
   capitalizeFirst: true,
   useTitleFromFileHeading: true
