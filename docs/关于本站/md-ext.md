@@ -1,6 +1,6 @@
-# 支持的 Markdown 扩展语法 {#markdown-extensions}
+# 支持的 Markdown 扩展语法
 
-VitePress 带有内置的 Markdown 扩展。
+本站基于 VitePress。VitePress 带有内置的 Markdown 扩展。
 
 ## 标题锚点 {#header-anchors}
 
@@ -597,75 +597,6 @@ const line3 = 'This is line 3'
 const line4 = 'This is line 4'
 ```
 
-## 导入代码片段 {#import-code-snippets}
-
-可以通过下面的语法来从现有文件中导入代码片段：
-
-```md
-<<< @/filepath
-```
-
-此语法同时支持[行高亮](#line-highlighting-in-code-blocks)：
-
-```md
-<<< @/filepath{highlightLines}
-```
-
-**输入**
-
-```md
-<<< @/snippets/snippet.js{2}
-```
-
-**Code file**
-
-<<< @/snippets/snippet.js
-
-**输出**
-
-<<< @/snippets/snippet.js{2}
-
-::: tip
-`@` 的值对应于源代码根目录，默认情况下是 VitePress 项目根目录，除非配置了 `srcDir`。或者也可以从相对路径导入：
-
-```md
-<<< ../snippets/snippet.js
-```
-
-:::
-
-也可以使用 [VS Code region](https://code.visualstudio.com/docs/editor/codebasics#_folding) 来只包含代码文件的相应部分。可以在文件目录后面的 `#` 符号后提供一个自定义的区域名：
-
-**输入**
-
-```md
-<<< @/snippets/snippet-with-region.js#snippet{1}
-```
-
-**Code file**
-
-<<< @/snippets/snippet-with-region.js
-
-**输出**
-
-<<< @/snippets/snippet-with-region.js#snippet{1}
-
-也可以像这样在大括号内(`{}`)指定语言：
-
-```md
-<<< @/snippets/snippet.cs{c#}
-
-<!-- 带行高亮: -->
-
-<<< @/snippets/snippet.cs{1,2,4-6 c#}
-
-<!-- 带行号: -->
-
-<<< @/snippets/snippet.cs{1,2,4-6 c#:line-numbers}
-```
-
-如果无法从文件扩展名推测出源语言，这将会很有帮助
-
 ## 代码组 {#code-groups}
 
 可以像这样对多个代码块进行分组：
@@ -726,162 +657,6 @@ export default config
 
 :::
 
-也可以在代码组中[导入代码片段](#import-code-snippets)：
-
-**输入**
-
-```md
-::: code-group
-
-<!-- 文件名默认用作标题 -->
-
-<<< @/snippets/snippet.js
-
-<!-- 也可以提供定制的代码组 -->
-
-<<< @/snippets/snippet-with-region.js#snippet{1,2 ts:line-numbers} [snippet with region]
-
-:::
-```
-
-**输出**
-
-::: code-group
-
-<<< @/snippets/snippet.js
-
-<<< @/snippets/snippet-with-region.js#snippet{1,2 ts:line-numbers} [snippet with region]
-
-:::
-
-## 包含 markdown 文件 {#markdown-file-inclusion}
-
-可以像这样在一个 markdown 文件中包含另一个 markdown 文件，甚至是内嵌的。
-
-::: tip
-也可以使用 `@`，它的值对应于源代码根目录，默认情况下是 VitePress 项目根目录，除非配置了 `srcDir`。
-:::
-
-例如，可以这样用相对路径包含 Markdown 文件：
-
-**输入**
-
-```md
-# Docs
-
-## Basics
-
-<!--@@include: ./parts/basics.md-->
-```
-
-**Part file** (`parts/basics.md`)
-
-```md
-Some getting started stuff.
-
-### Configuration
-
-Can be created using `.foorc.json`.
-```
-
-**等价代码**
-
-```md
-# Docs
-
-## Basics
-
-Some getting started stuff.
-
-### Configuration
-
-Can be created using `.foorc.json`.
-```
-
-它还支持选择行范围：
-
-**输入**
-
-```md
-# Docs
-
-## Basics
-
-<!--@@include: ./parts/basics.md{3,}-->
-```
-
-**Part file** (`parts/basics.md`)
-
-```md
-Some getting started stuff.
-
-### Configuration
-
-Can be created using `.foorc.json`.
-```
-
-**等价代码**
-
-```md
-# Docs
-
-## Basics
-
-### Configuration
-
-Can be created using `.foorc.json`.
-```
-
-所选行范围的格式可以是： `{3,}`、 `{,10}`、`{1,10}`
-
-::: warning
-如果指定的文件不存在，这将不会产生错误。因此，在使用这个功能的时候请保证内容按预期呈现。
-:::
-
-## 数学方程 {#math-equations}
-
-现在这是可选的。要启用它，需要安装 `markdown-it-mathjax3`，在配置文件中设置`markdown.math` 为 `true`：
-
-```sh
-npm add -D markdown-it-mathjax3@^4
-```
-
-```ts [.vitepress/config.ts]
-export default {
-  markdown: {
-    math: true
-  }
-}
-```
-
-**输入**
-
-```md
-When $a \ne 0$, there are two solutions to $(ax^2 + bx + c = 0)$ and they are
-$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
-
-**Maxwell's equations:**
-
-| equation                                                                                                                                                                  | description                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| $\nabla \cdot \vec{\mathbf{B}}  = 0$                                                                                                                                      | divergence of $\vec{\mathbf{B}}$ is zero                                               |
-| $\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t}  = \vec{\mathbf{0}}$                                                          | curl of $\vec{\mathbf{E}}$ is proportional to the rate of change of $\vec{\mathbf{B}}$ |
-| $\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} = \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} = 4 \pi \rho$ | _wha?_                                                                                 |
-```
-
-**输出**
-
-When $a \ne 0$, there are two solutions to $(ax^2 + bx + c = 0)$ and they are
-$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
-
-**Maxwell's equations:**
-
-| equation                                                                                                                                                                  | description                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| $\nabla \cdot \vec{\mathbf{B}}  = 0$                                                                                                                                      | divergence of $\vec{\mathbf{B}}$ is zero                                               |
-| $\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t}  = \vec{\mathbf{0}}$                                                          | curl of $\vec{\mathbf{E}}$ is proportional to the rate of change of $\vec{\mathbf{B}}$ |
-| $\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} = \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} = 4 \pi \rho$ | _wha?_                                                                                 |
-
 ## 图片懒加载 {#image-lazy-loading}
 
 通过在配置文件中将 `lazyLoading` 设置为 `true`，可以为通过 markdown 添加的每张图片启用懒加载。
@@ -925,3 +700,7 @@ export default defineConfig({
 ```
 
 请查看[配置参考：站点配置](../reference/site-config#markdown)来获取完整的可配置属性列表。
+
+## 原文
+
+https://vitepress.dev/zh/guide/markdown

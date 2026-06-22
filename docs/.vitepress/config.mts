@@ -29,6 +29,15 @@ const vitePressOptions = {
       message: 'Theme by <a href="https://vitepress.dev/" target="_blank">VitePress</a>',
       copyright: 'Copyright © 2026-present <a href="https://blog.ryanyuan.top/" target="_blank">Ryan'
     }
+  },
+  markdown: {
+    container: {
+      tipLabel: '提示',
+      warningLabel: '警告',
+      dangerLabel: '危险',
+      infoLabel: '信息',
+      detailsLabel: '更多'
+    }
   }
 }
 
