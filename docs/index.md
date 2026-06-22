@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: 开始阅读
-      link: /README
+      link: /start
     # - theme: alt
     #   text: 写作指南
     #   link: /关于本站/md-ext

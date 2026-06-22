@@ -7,7 +7,7 @@ const vitePressOptions = {
   themeConfig: {
     nav: [
       { text: '主页', link: '/' },
-      { text: '笔记', link: '/README', activeMatch: '\/.+'}
+      { text: '笔记', link: '/start', activeMatch: '\/.+'}
     ],
 
     socialLinks: [
