@@ -69,7 +69,36 @@ vite:{
     },
 
     workbox: {
-      navigateFallback: 'index.html'
+      navigateFallback: 'index.html',
+
+      runtimeCaching: [
+        // 文档页面优先网络，失败用缓存
+        {
+          urlPattern: ({ request }) => request.mode === 'navigate',
+          handler: 'NetworkFirst',
+          options: {
+            cacheName: 'pages',
+            networkTimeoutSeconds: 3,
+            expiration: {
+              maxEntries: 50
+            }
+          }
+        },
+
+        // 静态资源缓存
+        {
+          urlPattern: ({ request }) =>
+            ['style', 'script', 'image', 'font'].includes(request.destination),
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'assets',
+            expiration: {
+              maxEntries: 200,
+              maxAgeSeconds: 60 * 60 * 24 * 30 // 30天
+            }
+          }
+        }
+      ]
     }
   })]}
 }
