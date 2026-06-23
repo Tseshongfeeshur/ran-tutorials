@@ -1,10 +1,15 @@
 import { defineConfig } from 'vitepress'
 import { withSidebar } from 'vitepress-sidebar';
+import { VitePWA } from 'vite-plugin-pwa';
 
 const vitePressOptions = {
   title: "Ran's Tutorials",
+
   description: "一个牛逼的笔记集合，包含了一些 Windows 11 的基本操作和使用技巧。Just for Ran.",
+
   themeConfig: {
+    logo: '/favicon.png',
+
     nav: [
       { text: '主页', link: '/' },
       { text: '笔记', link: '/start', activeMatch: '\/.+'}
@@ -30,6 +35,7 @@ const vitePressOptions = {
       copyright: 'Copyright © 2026-present <a href="https://blog.ryanyuan.top/" target="_blank">Ryan'
     }
   },
+
   markdown: {
     container: {
       tipLabel: '提示',
@@ -38,7 +44,34 @@ const vitePressOptions = {
       infoLabel: '信息',
       detailsLabel: '更多'
     }
-  }
+  },
+vite:{
+  plugins: [VitePWA({
+    registerType: 'autoUpdate',
+
+    manifest: {
+      name: "Ran's Tutorial",
+      short_name: "Ran's Tutorial",
+      theme_color: 'black',
+      display: 'standalone',
+      icons: [
+        {
+          src: '/appicon-512.png',
+          sizes: '512x512',
+          type: 'image/png'
+        },
+        {
+          src: '/appicon-192.png',
+          sizes: '192x192',
+          type: 'image/png'
+        },
+      ]
+    },
+
+    workbox: {
+      navigateFallback: 'index.html'
+    }
+  })]}
 }
 
 const vitePressSidebarOptions = {
