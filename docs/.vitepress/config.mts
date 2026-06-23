@@ -1,6 +1,5 @@
 import { defineConfig } from 'vitepress'
 import { withSidebar } from 'vitepress-sidebar';
-import { VitePWA } from 'vite-plugin-pwa';
 
 const vitePressOptions = {
   title: "Ran's Tutorials",
@@ -45,62 +44,6 @@ const vitePressOptions = {
       detailsLabel: '更多'
     }
   },
-vite:{
-  plugins: [VitePWA({
-    registerType: 'autoUpdate',
-
-    manifest: {
-      name: "Ran's Tutorial",
-      short_name: "Ran's Tutorial",
-      theme_color: 'black',
-      display: 'standalone',
-      icons: [
-        {
-          src: '/appicon-512.png',
-          sizes: '512x512',
-          type: 'image/png'
-        },
-        {
-          src: '/appicon-192.png',
-          sizes: '192x192',
-          type: 'image/png'
-        },
-      ]
-    },
-
-    workbox: {
-      navigateFallback: 'index.html',
-
-      runtimeCaching: [
-        // 文档页面优先网络，失败用缓存
-        {
-          urlPattern: ({ request }) => request.mode === 'navigate',
-          handler: 'NetworkFirst',
-          options: {
-            cacheName: 'pages',
-            networkTimeoutSeconds: 3,
-            expiration: {
-              maxEntries: 50
-            }
-          }
-        },
-
-        // 静态资源缓存
-        {
-          urlPattern: ({ request }) =>
-            ['style', 'script', 'image', 'font'].includes(request.destination),
-          handler: 'CacheFirst',
-          options: {
-            cacheName: 'assets',
-            expiration: {
-              maxEntries: 200,
-              maxAgeSeconds: 60 * 60 * 24 * 30 // 30天
-            }
-          }
-        }
-      ]
-    }
-  })]}
 }
 
 const vitePressSidebarOptions = {
