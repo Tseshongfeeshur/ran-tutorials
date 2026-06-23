@@ -1,5 +1,9 @@
 # 支持的 Markdown 扩展语法
 
+:::tip
+此文章仅供笔者查阅写作格式，您可跳转到下一篇文章继续阅读。
+:::
+
 本站基于 VitePress。VitePress 带有内置的 Markdown 扩展。
 
 ## 标题锚点 {#header-anchors}

@@ -24,12 +24,13 @@
 | **办公** | `.docx` / `.doc` | 使用微软办公套件（Microsoft Office 的 Word）创建的文字文档。`.docx` 更常用更现代。 | Microsoft Office / WPS Office |
 | | `.xlsx` / `.xls` | 使用微软办公套件（Microsoft Office 的 Excel）创建的电子表格。常用于统计、数据整理。`.xlsx` 更常用更现代。 | Microsoft Office / WPS Office |
 | | `.pptx` / `.ppt` | 使用微软办公套件（Microsoft Office 的 PowerPoint）创建的演示文稿。常用于演讲、汇报。`.pptx` 更常用更现代。 | Microsoft Office / WPS Office |
-| **图片** | `.jpg` / `.jpeg` | 最常用。相机拍照时常常使用此格式。有损压缩，因此缺点是不能多次编辑保存，否则画质损失会越来越大。正确的方式是先转换为 `.png` 格式再编辑。 | Windows 照片 / 画图 |
-| | `.png` | 无损压缩，支持透明背景，适合保存素材。一般画质比 `.jpg` 图片更好，多次编辑保存画质不会损失。 | Windows 照片 / 画图 |
+| **图片** | `.jpg` / `.jpeg` | 最常用。相机拍照时常常使用此格式。有损压缩，因此缺点是不能多次编辑保存，否则画质损失会越来越大。正确的方式是先转换为 `.png` 格式再编辑。 | Windows 照片 / Windows 画图 |
+| | `.png` | 无损压缩，支持透明背景，适合保存素材。一般画质比 `.jpg` 图片更好，多次编辑保存画质不会损失。 | Windows 照片 / Windows 画图 |
 | | `.gif` | 有损压缩。图片内容可以变化，常用于表情包。缺点是色彩不够逼真。 | Windows 照片 / Google Chrome / Microsoft Edge |
 | | `.webp` | 无损 / 有损压缩。较新的图片格式，体积更小，适合在网络上传播。但兼容性稍差。 | Google Chrome / Microsoft Edge |
-| | `.bmp` | 无压缩，体积较大。 | Windows 照片 / 画图 |
+| | `.bmp` | 无压缩，体积较大。 | Windows 照片 / Windows 画图 |
 | | `.heic` | Apple 专有。Windows 需要安装插件或转换后查看，或在从设备导出时就使其先转换格式。实况图片常内含一个短小的视频。 | *<待补充>* |
+| | `.psd` | Adobe Photoshop 的工程文件，内部保留了图层及其信息。 | Adobe Photoshop |
 | **音频** | `.mp3` | 最常用，兼容性好，音质可能稍差。 | Windows 媒体播放器 / PotPlayer / VLC |
 | | `.opus` | 较新的音频格式，压缩算法很好，因此相同码率时通常音质优于 `.mp3`。不过较少见。 | PotPlayer / VLC |
 | | `.m4a` | 容器格式，内部可以封装其他格式。手机的录音常常使用此格式。 | Windows 媒体播放器 / PotPlayer / VLC |
